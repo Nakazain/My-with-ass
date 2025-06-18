@@ -2,10 +2,14 @@ const loading = document.querySelector('.loading');
 const triggerBtn = document.querySelector('.triggerloading');
 const introContainer = document.querySelector('.intro-container');
 const intro = document.querySelectorAll('.intro');
+const carouselItem = document.querySelectorAll('.carousel-item');
 const hidden = document.querySelector('.hidden');
 const blackBox = document.querySelector('.black-box');
 const home = document.getElementById('home');
 const project = document.getElementById('project');
+const next = document.querySelector('.next');
+const pref = document.querySelector('.pref');
+const carousel = document.querySelector('.carousel');
 
 function showLoading() {
   setTimeout(() => {
@@ -18,13 +22,26 @@ function showLoading() {
   }, 100);
 }
 
-// setTimeout(() => {
-//   loading.classList.add('done');
-// }, 2000);
-
-// setTimeout(() => {
-//   loading.classList.add('done');
-// }, 2000);
+function nextCarousel() {
+  if (carouselItem[0].classList.contains('active')) {
+    carouselItem[0].classList.remove('active');
+    carouselItem[0].classList.add('prev');
+    carousel.style.transform = 'translateY(-100vh)';
+    carouselItem[1].classList.add('active');
+  }
+  else if (carouselItem[1].classList.contains('active')) {
+    carouselItem[1].classList.remove('active');
+    carouselItem[1].classList.add('prev');
+    carousel.style.transform = 'translateY(-200vh)';
+    carouselItem[2].classList.add('active');
+  }
+  else if (carouselItem[2].classList.contains('active')) {
+    carouselItem[2].classList.remove('active');
+    carouselItem[2].classList.add('prev');
+    carousel.style.transform = 'translateY(-300vh)';
+    carouselItem[3].classList.add('active');
+  }
+}
 
 intro.forEach((el, index) => {
   setTimeout(() => {
@@ -46,3 +63,4 @@ setTimeout(() => {
 
 
 triggerBtn.addEventListener('click', showLoading);
+next.addEventListener('click', nextCarousel);

@@ -39,10 +39,10 @@
         </div>
       </div>
     </div>
-      <div id="project" class="carousel-wrapper hidden">
-        <div>
-        <div id="project-1" class="carousel active">
-          <div class="flex-box">
+      <div id="project" class="carousel-container hidden">
+        <div class="carousel" style="transform: translateY(0);">
+        <div class="carousel-item active">
+          <div class="carousel-item-image">
             <img
               class="project-image"
               src="/img/tes.png"
@@ -50,7 +50,7 @@
               width="500px"
             />
           </div>
-          <div class="flex-box">
+          <div class="carousel-item-content">
             <p class="title">Project 1</p>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
@@ -61,8 +61,8 @@
             <button class="triggerloading">View source code</button>
           </div>
         </div>
-        <div id="project-2" class="carousel">
-          <div class="flex-box">
+        <div class="carousel-item">
+          <div class="carousel-item-image">
             <img
               class="project-image"
               src="/img/tes.png"
@@ -70,7 +70,7 @@
               width="500px"
             />
           </div>
-          <div class="flex-box">
+          <div class="carousel-item-content">
             <p class="title">Project 2</p>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
@@ -81,8 +81,8 @@
             <button class="triggerloading">View source code</button>
           </div>
         </div>
-        <div id="project-3" class="carousel">
-          <div class="flex-box">
+        <div class="carousel-item">
+          <div class="carousel-item-image">
             <img
               class="project-image"
               src="/img/tes.png"
@@ -90,7 +90,7 @@
               width="500px"
             />
           </div>
-          <div class="flex-box">
+          <div class="carousel-item-content">
             <p class="title">Project 3</p>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
@@ -101,10 +101,10 @@
             <button class="triggerloading">View source code</button>
           </div>
         </div>
-        <div class="carousel-button">
-          <button class="pref">Previously</button>
-          <button class="next">Next</button>
-        </div>
+      </div>
+      <div class="carousel-button">
+        <button disabled class="pref disabled">Previously</button>
+        <button class="next">Next</button>
       </div>
       </div>
     <script src="script.js"></script>
