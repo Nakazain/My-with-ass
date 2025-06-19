@@ -23,24 +23,45 @@ function showLoading() {
 }
 
 function nextCarousel() {
-  if (carouselItem[0].classList.contains('active')) {
-    carouselItem[0].classList.remove('active');
-    carouselItem[0].classList.add('prev');
-    carousel.style.transform = 'translateY(-100vh)';
-    carouselItem[1].classList.add('active');
+  const activeIndex = Array.from(carouselItem).findIndex(item => item.classList.contains('active'));
+  
+  if (activeIndex === carouselItem.length - 2) {
+    console.log('Jalan nih');
+    next.disabled = true;
+    next.classList.add('disabled');
+  } 
+  if (pref.disabled == true) {
+    pref.disabled = false;
+    pref.classList.remove('disabled');
   }
-  else if (carouselItem[1].classList.contains('active')) {
-    carouselItem[1].classList.remove('active');
-    carouselItem[1].classList.add('prev');
-    carousel.style.transform = 'translateY(-200vh)';
-    carouselItem[2].classList.add('active');
+
+  carouselItem[activeIndex].classList.remove('active');
+  carouselItem[activeIndex].classList.add('prev');
+
+  carouselItem[activeIndex + 1].classList.add('active');
+
+  carousel.style.transform = `translateY(-${(activeIndex + 1) * 100}vh)`;
+}
+
+function prefCarousel() {
+  const activeIndex = Array.from(carouselItem).findIndex(item => item.classList.contains('active'));
+
+  if (activeIndex === carouselItem[0]) {
+    pref.disabled = true;
+    pref.classList.add('disabled');
   }
-  else if (carouselItem[2].classList.contains('active')) {
-    carouselItem[2].classList.remove('active');
-    carouselItem[2].classList.add('prev');
-    carousel.style.transform = 'translateY(-300vh)';
-    carouselItem[3].classList.add('active');
+
+  if (next.disabled == true) {
+    next.disabled = false;
+    next.classList.remove('disabled');
   }
+
+  carouselItem[activeIndex].classList.remove('active');
+
+  carouselItem[activeIndex - 1].classList.remove('prev');
+  carouselItem[activeIndex - 1].classList.add('active');
+
+  carousel.style.transform = `translateY(-${(activeIndex - 1) * 100}vh)`;
 }
 
 intro.forEach((el, index) => {
@@ -64,3 +85,4 @@ setTimeout(() => {
 
 triggerBtn.addEventListener('click', showLoading);
 next.addEventListener('click', nextCarousel);
+pref.addEventListener('click', prefCarousel);

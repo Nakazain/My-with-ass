@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -27,15 +28,8 @@ p {
   transition: all 1.5s ease-in-out;
 }
 
-.carousel-button {
-  position: fixed;
-  z-index: 2;
-  bottom: 10%;
-  left: 50%;    
-  transform: translate(-50%, -50%); 
-}
-
-.loading, .intro-container {
+.loading,
+.intro-container {
   position: fixed;
   background-color: black;
   top: 0;
@@ -186,71 +180,76 @@ p.title {
   position: relative;
   transition: all 1.5s ease-in-out;
 
+  &-item {
+    height: 100vh;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    max-width: 1100px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 1.5s ease-in-out;
 
-    &-item {
-			height: 100vh;
-			transform-style: preserve-3d;
-			perspective: 1000px;
-      max-width: 1100px;
-			position: relative;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-      transition: all 1.5s ease-in-out;
-
-      @media screen and (max-width: 991px) {
-				display: block;
-				text-align: center;
-				padding-top: 5vh;
-			}
-
-      &-image {
-        flex: 1;
-        margin-left: 5vw;
-				transform: translateZ(50px);
-				transition: all 1.5s ease-in-out;
-        transform: translateY(20vh) translateX(20%) rotateY(-90deg);
-				filter: blur(20px);
-				position: relative;
-        z-index: 1;
-      }
-
-      &-content {
-        flex: 1;
-        margin-left: 5vw;
-				transform: translateZ(50px);
-				transition: all 1.5s ease-in-out;
-				transform: translate3d(20vw, 0, 0);
-				filter: blur(20px);
-				position: relative;
-				z-index: 10;
-      }
-
-      &.active {
-        .carousel-item-image {
-          transform: translate(0);
-          filter: blur(0);
-        }
-        .carousel-item-content {
-          transform: translateZ(0);
-          filter: blur(0);
-        }
-      }
-
-      &.prev {
-        .carousel-item-image{
-          transform: translate(0) rotateY(90deg);
-          filter: blur(20px);
-        }
-        .carousel-item-content{
-          transform: translateX(20vw) translateY(0);
-          filter: blur(10px);
-        }
-      }
-
-
+    @media screen and (max-width: 991px) {
+      display: block;
+      text-align: center;
     }
+
+    &-image {
+      flex: 1;
+      margin-left: 5vw;
+      transform: translateZ(50px);
+      transition: all 1.5s ease-in-out;
+      transform: translateY(20vh) translateX(20%) rotateY(-90deg);
+      filter: blur(20px);
+      position: relative;
+      z-index: 1;
+    }
+
+    &-content {
+      flex: 1;
+      margin-left: 5vw;
+      transform: translateZ(50px);
+      transition: all 1.5s ease-in-out;
+      transform: translate3d(20vw, 0, 0);
+      filter: blur(20px);
+      position: relative;
+      z-index: 10;
+    }
+
+    &.active {
+      .carousel-item-image {
+        transform: translate(0);
+        filter: blur(0);
+      }
+      .carousel-item-content {
+        transform: translateZ(0);
+        filter: blur(0);
+      }
+    }
+
+    &.prev {
+      .carousel-item-image {
+        transform: translate(0) rotateY(90deg);
+        filter: blur(20px);
+      }
+      .carousel-item-content {
+        transform: translateX(20vw) translateY(0);
+        filter: blur(10px);
+      }
+    }
+  }
 }
+
+.carousel-button {
+  position: fixed;
+  z-index: 2;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 
 button {
   border: 1px solid black;
@@ -262,6 +261,7 @@ button {
   box-shadow: 0px 0px 1px;
   transform: all 2s esase;
   transition-duration: 0.3s;
+  overflow: hidden;
 
   &:hover {
     transform: translateY(-10px);
