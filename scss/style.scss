@@ -5,6 +5,10 @@ body {
   padding: 0;
 }
 
+:root {
+  --anim: cubic-bezier(.76, 0, .24, 1);
+}
+
 p {
   margin: 0px;
 }
@@ -25,7 +29,7 @@ p {
   padding: 0;
   gap: 20px;
   overflow: hidden;
-  transition: all 1.5s ease-in-out;
+  transition: all 1.5s var(--anim);
 }
 
 .loading,
@@ -44,14 +48,12 @@ p {
 }
 
 .loading {
-  transition: height 1s;
-  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  transition: height 1s var(--anim);
 }
 
 .intro-container {
   font-size: 5rem;
-  transition: width 1s;
-  transition-timing-function: ease-in-out;
+  transition: width 1s var(--anim);
 }
 
 .black-box {
@@ -178,7 +180,7 @@ p.title {
 .carousel {
   height: 100vh;
   position: relative;
-  transition: all 1.5s ease-in-out;
+  transition: all 1.5s var(--anim);
 
   &-item {
     height: 100vh;
@@ -189,7 +191,7 @@ p.title {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 1.5s ease-in-out;
+    transition: all 1.5s var(--anim);
 
     @media screen and (max-width: 991px) {
       display: block;
@@ -200,7 +202,7 @@ p.title {
       flex: 1;
       margin-left: 5vw;
       transform: translateZ(50px);
-      transition: all 1.5s ease-in-out;
+      transition: all 1.5s var(--anim);
       transform: translateY(20vh) translateX(20%) rotateY(-90deg);
       filter: blur(20px);
       position: relative;
@@ -211,7 +213,7 @@ p.title {
       flex: 1;
       margin-left: 5vw;
       transform: translateZ(50px);
-      transition: all 1.5s ease-in-out;
+      transition: all 1.5s var(--anim);
       transform: translate3d(20vw, 0, 0);
       filter: blur(20px);
       position: relative;
@@ -250,6 +252,102 @@ p.title {
   transform: translateX(-50%);
 }
 
+.nav {
+  position: fixed;
+  z-index: 3;
+  bottom: 3%;
+  left: 50%;
+  transform: translateX(-50%) translateY(5rem) scale(0.5);
+  margin: 0;
+  border: 1px solid #ccc;
+  transition: transform 1s var(--anim);
+
+  &.nav-show {
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+
+  &-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  p {
+    background-color: rgb(236, 236, 236);
+    font-size: larger;
+    min-width: 80px;
+    padding: 20px 10px;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    transition: all 1s var(--anim);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 0%;
+      background: black;
+      z-index: 0;
+      opacity: 0;
+      transition: all 0.4s var(--anim);
+    }
+
+    .normal,
+    .hover {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 1;
+      transition: all 0.6s var(--anim);
+    }
+
+    .normal {
+      opacity: 1;
+      transform: translateY(0);
+      color: black;
+    }
+
+    .hover {
+      opacity: 0;
+      transform: translateY(100%);
+      color: whitesmoke;
+      pointer-events: none;
+    }
+
+    &:hover::before {
+      opacity: 1;
+      height: 100%;
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      .normal {
+        opacity: 0;
+        filter: blur(20px);
+        transform: translateY(-100%);
+      }
+
+      .hover {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+    }
+  }
+}
 
 button {
   border: 1px solid black;
@@ -259,7 +357,7 @@ button {
   font-weight: bolder;
   font-size: 15px;
   box-shadow: 0px 0px 1px;
-  transform: all 2s esase;
+  transform: all 2s var(--anim);
   transition-duration: 0.3s;
   overflow: hidden;
 

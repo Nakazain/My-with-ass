@@ -10,15 +10,22 @@ const project = document.getElementById('project');
 const next = document.querySelector('.next');
 const pref = document.querySelector('.pref');
 const carousel = document.querySelector('.carousel');
+const nav = document.querySelector('.nav');
+
+playIntro();
 
 function showLoading() {
   setTimeout(() => {
     loading.classList.remove('done');
+    nav.classList.remove("nav-show");
     setTimeout(() => {
       loading.classList.add('done');
       home.classList.add('hidden');
       project.classList.remove('hidden');
     }, 2000);
+    setTimeout(() => {
+      nav.classList.add("nav-show");
+    }, 3000);
   }, 100);
 }
 
@@ -64,24 +71,26 @@ function prefCarousel() {
   carousel.style.transform = `translateY(-${(activeIndex - 1) * 100}vh)`;
 }
 
-intro.forEach((el, index) => {
+function playIntro () {
+  intro.forEach((el, index) => {
+    setTimeout(() => {
+        el.classList.add("play-intro");
+      }, 300 + index * 500);
+  });
   setTimeout(() => {
-      el.classList.add("play-intro");
-    }, 300 + index * 500);
-});
-setTimeout(() => {
-  introContainer.classList.add('done');
+    introContainer.classList.add('done');
+    setTimeout(() => {
+      blackBox.classList.remove("active");
+    }, 1500);
+    setTimeout(() => {
+      blackBox.classList.add("active");
+      hidden.classList.remove("hidden")
+    }, 3000);
+  }, 3500);
   setTimeout(() => {
-    blackBox.classList.remove("active");
-  }, 1500);
-  setTimeout(() => {
-    blackBox.classList.add("active");
-    hidden.classList.remove("hidden")
-  }, 3000);
-}, 3500);
-
-
-
+    nav.classList.add("nav-show")
+  }, 4500);
+}
 
 triggerBtn.addEventListener('click', showLoading);
 next.addEventListener('click', nextCarousel);
