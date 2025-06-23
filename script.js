@@ -33,7 +33,6 @@ function nextCarousel() {
   const activeIndex = Array.from(carouselItem).findIndex(item => item.classList.contains('active'));
   
   if (activeIndex === carouselItem.length - 2) {
-    console.log('Jalan nih');
     next.disabled = true;
     next.classList.add('disabled');
   } 
@@ -41,19 +40,19 @@ function nextCarousel() {
     pref.disabled = false;
     pref.classList.remove('disabled');
   }
-
+  
   carouselItem[activeIndex].classList.remove('active');
   carouselItem[activeIndex].classList.add('prev');
-
+  
   carouselItem[activeIndex + 1].classList.add('active');
-
+  
   carousel.style.transform = `translateY(-${(activeIndex + 1) * 100}vh)`;
 }
 
 function prefCarousel() {
   const activeIndex = Array.from(carouselItem).findIndex(item => item.classList.contains('active'));
 
-  if (activeIndex === carouselItem[0]) {
+  if (activeIndex === 1) {
     pref.disabled = true;
     pref.classList.add('disabled');
   }
@@ -62,12 +61,11 @@ function prefCarousel() {
     next.disabled = false;
     next.classList.remove('disabled');
   }
-
   carouselItem[activeIndex].classList.remove('active');
-
+  
   carouselItem[activeIndex - 1].classList.remove('prev');
   carouselItem[activeIndex - 1].classList.add('active');
-
+  
   carousel.style.transform = `translateY(-${(activeIndex - 1) * 100}vh)`;
 }
 
