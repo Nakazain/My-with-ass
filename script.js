@@ -32,6 +32,8 @@ function goToProject() {
       nav.classList.add("nav-show");
     }, 3000);
   }, 100);
+  navPrjk.removeEventListener("click", goToProject);
+  navHome.addEventListener("click", playIntro);
 }
 
 function playIntro() {
@@ -44,14 +46,16 @@ function playIntro() {
     navPrjk.classList.remove("active");
     introContainer.classList.remove("done");
     nav.classList.remove("nav-show");
+    setTimeout(() => {
+      intro.forEach((el, index) => {
+        el.classList.remove("hidden");
+      });
+    }, 650);
 
     setTimeout(() => {
       project.classList.add("hidden");
       home.classList.remove("hidden");
-      intro.forEach((el, index) => {
-        el.classList.remove("hidden");
-      });
-    }, 300);
+    }, 800);
   }
 
   intro.forEach((el, index) => {
@@ -62,6 +66,7 @@ function playIntro() {
       el.classList.add("hidden");
     }, 3000 + index * 500);
   });
+  
 
   setTimeout(() => {
     introContainer.classList.add("done");
@@ -74,10 +79,14 @@ function playIntro() {
     }, 3000);
   }, 3500);
 
+  navHome.removeEventListener("click", playIntro);
+  navPrjk.addEventListener("click", goToProject);
+  
   setTimeout(() => {
     nav.classList.add("nav-show");
     navHome.classList.add("active");
   }, 4500);
+
 }
 
 function nextCarousel() {
@@ -125,7 +134,5 @@ function prefCarousel() {
 }
 
 triggerBtn.addEventListener("click", goToProject);
-navPrjk.addEventListener("click", goToProject);
-navHome.addEventListener("click", playIntro);
 next.addEventListener("click", nextCarousel);
 pref.addEventListener("click", prefCarousel);
