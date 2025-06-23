@@ -285,6 +285,13 @@ p.title {
   opacity: 0;
   transition: all 0.4s var(--anim);
 }
+.nav p.active .normal {
+  color: white;
+}
+.nav p.active::before {
+  opacity: 1;
+  height: 100%;
+}
 .nav p .normal,
 .nav p .hover {
   position: absolute;
@@ -301,12 +308,13 @@ p.title {
 }
 .nav p .normal {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
   color: black;
 }
 .nav p .hover {
   opacity: 0;
-  transform: translateY(100%);
+  transform: translateY(200%) scale(0);
+  filter: blur(10px);
   color: whitesmoke;
   pointer-events: none;
 }
@@ -319,12 +327,13 @@ p.title {
 }
 .nav p:hover .normal {
   opacity: 0;
-  filter: blur(20px);
-  transform: translateY(-100%);
+  filter: blur(10px);
+  transform: translateY(-200%) scale(0, 5);
 }
 .nav p:hover .hover {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+  filter: blur(0);
   pointer-events: auto;
 }
 

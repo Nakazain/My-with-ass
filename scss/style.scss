@@ -298,6 +298,17 @@ p.title {
       transition: all 0.4s var(--anim);
     }
 
+    &.active { 
+      .normal {
+        color: white;
+      }
+
+      &::before {
+        opacity: 1;
+        height: 100%;
+      }
+    }
+
     .normal,
     .hover {
       position: absolute;
@@ -315,13 +326,14 @@ p.title {
 
     .normal {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
       color: black;
     }
 
     .hover {
       opacity: 0;
-      transform: translateY(100%);
+      transform: translateY(200%) scale(0,);
+      filter: blur(10px);
       color: whitesmoke;
       pointer-events: none;
     }
@@ -336,13 +348,14 @@ p.title {
 
       .normal {
         opacity: 0;
-        filter: blur(20px);
-        transform: translateY(-100%);
+        filter: blur(10px);
+        transform: translateY(-200%) scale(0,5);
       }
-
+      
       .hover {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
+        filter: blur(0);
         pointer-events: auto;
       }
     }
