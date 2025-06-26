@@ -337,43 +337,94 @@ p.title {
   pointer-events: auto;
 }
 
-button {
+button, a.btn {
+  box-sizing: border-box;
   border: 1px solid black;
   padding: 12px 30px 12px 30px;
   background-color: white;
-  margin-block: 0.75rem;
   font-weight: bolder;
   font-size: 15px;
   box-shadow: 0px 0px 1px;
-  transform: all 2s var(--anim);
+  transition: all 2s var(--anim);
   transition-duration: 0.3s;
   overflow: hidden;
 }
-button:hover {
+button button, a.btn button {
+  margin-top: 0.75rem;
+}
+button a.btn, a.btn a.btn {
+  margin-top: 0rem;
+}
+button:hover, a.btn:hover {
   transform: translateY(-10px);
   box-shadow: 0px 7px 1px rgb(0, 0, 0);
   border: 1px solid black;
   cursor: pointer;
 }
-button:active {
+button:active, a.btn:active {
   transform: translateY(5px);
   box-shadow: 0px 0px 1px;
 }
-button.disabled {
+button.disabled, a.btn.disabled {
   cursor: not-allowed;
 }
-button.disabled:hover {
+button.disabled:hover, a.btn.disabled:hover {
   transform: none;
   box-shadow: none;
 }
-button.disabled:active {
+button.disabled:active, a.btn.disabled:active {
   transform: none;
 }
-button.next {
+button.next, a.btn.next {
   border-radius: 0 10px 10px 0;
 }
-button.pref {
+button.pref, a.btn.pref {
   border-radius: 10px 0 0 10px;
+}
+
+.w-full {
+  width: 100%;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.contact-container {
+  margin: 5rem;
+}
+
+.contact-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.more {
+  grid-column: 1/-1;
+}
+
+h1, h2.title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: black 3px solid;
+}
+
+form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+form input {
+  width: 100%;
+  padding: 0.5rem;
+}
+form textarea {
+  grid-column: 1/-1;
+}
+form button {
+  grid-column: 1/-1;
 }
 
 /*# sourceMappingURL=style.css.map */

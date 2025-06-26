@@ -362,17 +362,25 @@ p.title {
   }
 }
 
-button {
+button, a.btn {
+  box-sizing: border-box;
   border: 1px solid black;
   padding: 12px 30px 12px 30px;
   background-color: white;
-  margin-block: 0.75rem;
   font-weight: bolder;
   font-size: 15px;
   box-shadow: 0px 0px 1px;
-  transform: all 2s var(--anim);
+  transition: all 2s var(--anim);
   transition-duration: 0.3s;
   overflow: hidden;
+
+  button {
+    margin-top: 0.75rem;
+  }
+
+  a.btn {
+    margin-top: 0rem;
+  }
 
   &:hover {
     transform: translateY(-10px);
@@ -405,5 +413,53 @@ button {
 
   &.pref {
     border-radius: 10px 0 0 10px;
+  }
+}
+
+.w-full{
+  width: 100%;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.contact-container {
+  margin: 5rem;
+}
+
+.contact-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+  
+.more {
+  grid-column: 1 / -1;
+}
+
+h1, h2.title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: black 3px solid;
+}
+
+form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+
+  input {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  textarea {
+    grid-column: 1 / -1;
+  }
+
+  button {
+    grid-column: 1 / -1;
   }
 }
