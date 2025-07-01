@@ -250,7 +250,7 @@ p.title {
   transform: translateX(-50%) translateY(5rem) scale(0.5);
   margin: 0;
   border: 1px solid #ccc;
-  transition: transform 1s var(--anim);
+  transition: transform 0.5s var(--anim);
 }
 .nav.nav-show {
   transform: translateX(-50%) translateY(0) scale(1);
@@ -269,7 +269,7 @@ p.title {
   border: none;
   position: relative;
   overflow: hidden;
-  transition: all 1s var(--anim);
+  transition: all 0.5s var(--anim);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -304,7 +304,7 @@ p.title {
   align-items: center;
   text-align: center;
   z-index: 1;
-  transition: all 0.6s var(--anim);
+  transition: all 0.5s var(--anim);
 }
 .nav p .normal {
   opacity: 1;
@@ -349,7 +349,7 @@ button, a.btn {
   transition-duration: 0.3s;
   overflow: hidden;
 }
-button button, a.btn button {
+button button.triggerloading, a.btn button.triggerloading {
   margin-top: 0.75rem;
 }
 button a.btn, a.btn a.btn {
@@ -405,7 +405,7 @@ button.pref, a.btn.pref {
   grid-column: 1/-1;
 }
 
-h1, h2.title {
+h1.title, h2.title {
   font-size: 2rem;
   margin-bottom: 1rem;
   border-bottom: black 3px solid;
@@ -417,10 +417,13 @@ form {
   gap: 1rem;
 }
 form input {
+  box-sizing: border-box;
   width: 100%;
   padding: 0.5rem;
 }
 form textarea {
+  resize: vertical;
+  padding: 0.5rem;
   grid-column: 1/-1;
 }
 form button {
