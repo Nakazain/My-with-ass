@@ -1,12 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+
 html,
 body {
+  font-family: "Space Grotesk", sans-serif;
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
 :root {
-  --anim: cubic-bezier(.76, 0, .24, 1);
+  --anim: cubic-bezier(0.76, 0, 0.24, 1);
 }
 
 p {
@@ -49,11 +52,21 @@ p {
 
 .loading {
   transition: height 1s var(--anim);
+
+  &.done {
+    height: 0%;
+    overflow: hidden;
+  }
 }
 
 .intro-container {
   font-size: 5rem;
   transition: width 1s var(--anim);
+
+  &.done {
+    width: 0%;
+    overflow: hidden;
+  }
 }
 
 .black-box {
@@ -70,30 +83,18 @@ p {
   }
 }
 
-.intro-container.done {
-  width: 0%;
-  overflow: hidden;
-}
-
-.intro-1 {
-  top: 15%;
-}
-.intro-3 {
-  bottom: 15%;
-}
-
-.square {
-  position: absolute;
-  background-color: black;
-  width: 5%;
-  height: 10%;
-  animation: square 1s ease-in-out 300ms infinite alternate both;
-}
-
 .intro {
   position: absolute;
   text-align: center;
   left: 120%;
+
+  &.intro-1 {
+    top: 15%;
+  }
+
+  &.intro-3 {
+    bottom: 15%;
+  }
 }
 
 .hidden {
@@ -102,15 +103,6 @@ p {
 
 .play-intro {
   animation: intro 2.5s ease-in-out;
-}
-
-@keyframes square {
-  0% {
-    left: 0%;
-  }
-  100% {
-    left: 40%;
-  }
 }
 
 @keyframes intro {
@@ -136,11 +128,6 @@ p.loading-text {
 p.title {
   font-size: 4rem;
   margin-block: 0.5rem;
-}
-
-.loading.done {
-  height: 0%;
-  overflow: hidden;
 }
 
 .flex-container {
@@ -273,9 +260,10 @@ p.title {
     align-items: center;
   }
 
-  p {
+  p,
+  a {
     background-color: rgb(236, 236, 236);
-    font-size: larger;
+    font-size: large;
     min-width: 80px;
     padding: 20px 10px;
     border: none;
@@ -298,7 +286,7 @@ p.title {
       transition: all 0.4s var(--anim);
     }
 
-    &.active { 
+    &.active {
       .normal {
         color: white;
       }
@@ -332,7 +320,7 @@ p.title {
 
     .hover {
       opacity: 0;
-      transform: translateY(200%) scale(0,);
+      transform: translateY(200%) scale(0);
       filter: blur(10px);
       color: whitesmoke;
       pointer-events: none;
@@ -349,9 +337,9 @@ p.title {
       .normal {
         opacity: 0;
         filter: blur(10px);
-        transform: translateY(-200%) scale(0,5);
+        transform: translateY(-200%) scale(0, 5);
       }
-      
+
       .hover {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -362,7 +350,13 @@ p.title {
   }
 }
 
-button, a.btn {
+button {
+  margin-top: 0.75rem;
+}
+
+button,
+a.btn {
+  font-family: "Space Grotesk", sans-serif;
   box-sizing: border-box;
   border: 1px solid black;
   padding: 12px 30px 12px 30px;
@@ -373,14 +367,6 @@ button, a.btn {
   transition: all 2s var(--anim);
   transition-duration: 0.3s;
   overflow: hidden;
-
-  button.triggerloading {
-    margin-top: 0.75rem;
-  }
-
-  a.btn {
-    margin-top: 0rem;
-  }
 
   &:hover {
     transform: translateY(-10px);
@@ -416,7 +402,7 @@ button, a.btn {
   }
 }
 
-.w-full{
+.w-full {
   width: 100%;
   display: flex;
   gap: 5px;
@@ -434,12 +420,13 @@ button, a.btn {
   grid-template-columns: repeat(4, 1fr);
   gap: 0.5rem;
 }
-  
+
 .more {
   grid-column: 1 / -1;
 }
 
-h1.title, h2.title {
+h1.title,
+h2.title {
   font-size: 2rem;
   margin-bottom: 1rem;
   border-bottom: black 3px solid;
@@ -449,14 +436,16 @@ form {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  
+
   input {
+    font-family: "Space Grotesk", sans-serif;
     box-sizing: border-box;
     width: 100%;
     padding: 0.5rem;
   }
-  
+
   textarea {
+    font-family: "Space Grotesk", sans-serif;
     resize: vertical;
     padding: 0.5rem;
     grid-column: 1 / -1;

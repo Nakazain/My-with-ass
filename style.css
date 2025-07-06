@@ -1,12 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
 html,
 body {
+  font-family: "Space Grotesk", sans-serif;
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
 :root {
-  --anim: cubic-bezier(.76, 0, .24, 1);
+  --anim: cubic-bezier(0.76, 0, 0.24, 1);
 }
 
 p {
@@ -50,10 +52,18 @@ p {
 .loading {
   transition: height 1s var(--anim);
 }
+.loading.done {
+  height: 0%;
+  overflow: hidden;
+}
 
 .intro-container {
   font-size: 5rem;
   transition: width 1s var(--anim);
+}
+.intro-container.done {
+  width: 0%;
+  overflow: hidden;
 }
 
 .black-box {
@@ -69,31 +79,16 @@ p {
   overflow: hidden;
 }
 
-.intro-container.done {
-  width: 0%;
-  overflow: hidden;
-}
-
-.intro-1 {
-  top: 15%;
-}
-
-.intro-3 {
-  bottom: 15%;
-}
-
-.square {
-  position: absolute;
-  background-color: black;
-  width: 5%;
-  height: 10%;
-  animation: square 1s ease-in-out 300ms infinite alternate both;
-}
-
 .intro {
   position: absolute;
   text-align: center;
   left: 120%;
+}
+.intro.intro-1 {
+  top: 15%;
+}
+.intro.intro-3 {
+  bottom: 15%;
 }
 
 .hidden {
@@ -104,14 +99,6 @@ p {
   animation: intro 2.5s ease-in-out;
 }
 
-@keyframes square {
-  0% {
-    left: 0%;
-  }
-  100% {
-    left: 40%;
-  }
-}
 @keyframes intro {
   0% {
     left: 120%;
@@ -134,11 +121,6 @@ p.loading-text {
 p.title {
   font-size: 4rem;
   margin-block: 0.5rem;
-}
-
-.loading.done {
-  height: 0%;
-  overflow: hidden;
 }
 
 .flex-container {
@@ -261,9 +243,10 @@ p.title {
   justify-content: center;
   align-items: center;
 }
-.nav p {
+.nav p,
+.nav a {
   background-color: rgb(236, 236, 236);
-  font-size: larger;
+  font-size: large;
   min-width: 80px;
   padding: 20px 10px;
   border: none;
@@ -274,7 +257,8 @@ p.title {
   justify-content: center;
   align-items: center;
 }
-.nav p::before {
+.nav p::before,
+.nav a::before {
   content: "";
   position: absolute;
   bottom: 0;
@@ -285,15 +269,19 @@ p.title {
   opacity: 0;
   transition: all 0.4s var(--anim);
 }
-.nav p.active .normal {
+.nav p.active .normal,
+.nav a.active .normal {
   color: white;
 }
-.nav p.active::before {
+.nav p.active::before,
+.nav a.active::before {
   opacity: 1;
   height: 100%;
 }
 .nav p .normal,
-.nav p .hover {
+.nav p .hover,
+.nav a .normal,
+.nav a .hover {
   position: absolute;
   left: 0;
   top: 0;
@@ -306,38 +294,50 @@ p.title {
   z-index: 1;
   transition: all 0.5s var(--anim);
 }
-.nav p .normal {
+.nav p .normal,
+.nav a .normal {
   opacity: 1;
   transform: translateY(0) scale(1);
   color: black;
 }
-.nav p .hover {
+.nav p .hover,
+.nav a .hover {
   opacity: 0;
   transform: translateY(200%) scale(0);
   filter: blur(10px);
   color: whitesmoke;
   pointer-events: none;
 }
-.nav p:hover::before {
+.nav p:hover::before,
+.nav a:hover::before {
   opacity: 1;
   height: 100%;
 }
-.nav p:hover {
+.nav p:hover,
+.nav a:hover {
   cursor: pointer;
 }
-.nav p:hover .normal {
+.nav p:hover .normal,
+.nav a:hover .normal {
   opacity: 0;
   filter: blur(10px);
   transform: translateY(-200%) scale(0, 5);
 }
-.nav p:hover .hover {
+.nav p:hover .hover,
+.nav a:hover .hover {
   opacity: 1;
   transform: translateY(0) scale(1);
   filter: blur(0);
   pointer-events: auto;
 }
 
-button, a.btn {
+button {
+  margin-top: 0.75rem;
+}
+
+button,
+a.btn {
+  font-family: "Space Grotesk", sans-serif;
   box-sizing: border-box;
   border: 1px solid black;
   padding: 12px 30px 12px 30px;
@@ -349,36 +349,37 @@ button, a.btn {
   transition-duration: 0.3s;
   overflow: hidden;
 }
-button button.triggerloading, a.btn button.triggerloading {
-  margin-top: 0.75rem;
-}
-button a.btn, a.btn a.btn {
-  margin-top: 0rem;
-}
-button:hover, a.btn:hover {
+button:hover,
+a.btn:hover {
   transform: translateY(-10px);
   box-shadow: 0px 7px 1px rgb(0, 0, 0);
   border: 1px solid black;
   cursor: pointer;
 }
-button:active, a.btn:active {
+button:active,
+a.btn:active {
   transform: translateY(5px);
   box-shadow: 0px 0px 1px;
 }
-button.disabled, a.btn.disabled {
+button.disabled,
+a.btn.disabled {
   cursor: not-allowed;
 }
-button.disabled:hover, a.btn.disabled:hover {
+button.disabled:hover,
+a.btn.disabled:hover {
   transform: none;
   box-shadow: none;
 }
-button.disabled:active, a.btn.disabled:active {
+button.disabled:active,
+a.btn.disabled:active {
   transform: none;
 }
-button.next, a.btn.next {
+button.next,
+a.btn.next {
   border-radius: 0 10px 10px 0;
 }
-button.pref, a.btn.pref {
+button.pref,
+a.btn.pref {
   border-radius: 10px 0 0 10px;
 }
 
@@ -405,7 +406,8 @@ button.pref, a.btn.pref {
   grid-column: 1/-1;
 }
 
-h1.title, h2.title {
+h1.title,
+h2.title {
   font-size: 2rem;
   margin-bottom: 1rem;
   border-bottom: black 3px solid;
@@ -417,11 +419,13 @@ form {
   gap: 1rem;
 }
 form input {
+  font-family: "Space Grotesk", sans-serif;
   box-sizing: border-box;
   width: 100%;
   padding: 0.5rem;
 }
 form textarea {
+  font-family: "Space Grotesk", sans-serif;
   resize: vertical;
   padding: 0.5rem;
   grid-column: 1/-1;

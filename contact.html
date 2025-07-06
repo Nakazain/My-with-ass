@@ -36,6 +36,29 @@
         <button type="submit" class="btn">Send Message</button>
     </form>
   </div>
+      <div class="nav nav-show">
+      <div class="nav-container">
+        <a href="index.html" class="nav-home">
+          <span class="normal">Home</span>
+          <span class="hover">Home</span>
+        </a>
+        <p class="nav-project">
+          <span class="normal">Project</span>
+          <span class="hover">Project</span>
+        </p>
+        <p class="nav-about active">
+          <span class="normal">Contact</span>
+          <span class="hover">Contact</span>
+        </p>
+      </div>
+    </div>
   <script src="script.js"></script>
+  <script>
+    navPrjk.addEventListener("click", function(e) {
+    e.preventDefault(); 
+    sessionStorage.setItem("goToProject", "true");
+    window.location.href = "index.html";
+  });
+  </script>
 </body>
 </html>

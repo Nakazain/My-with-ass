@@ -15,23 +15,47 @@ const nav = document.querySelector(".nav");
 const navHome = document.querySelector(".nav-home");
 const navPrjk = document.querySelector(".nav-project");
 
-playIntro();
+if (window.location.pathname.endsWith("index.html") || window.location.pathname === "/" || window.location.pathname === "/index.html" && sessionStorage.getItem("goToProject") !== "true") {
+  playIntro();
+}
+
+if (sessionStorage.getItem("goToProject") === "true") {
+  goToProject();
+  sessionStorage.removeItem("goToProject")
+}
 
 function goToProject() {
-  setTimeout(() => {
-    loading.classList.remove("done");
-    navHome.classList.remove("active");
-    nav.classList.remove("nav-show");
+  // if (sessionStorage.getItem("goToProject") === "true") {
+  //   introContainer.classList.remove("done");
+  //     intro.forEach((el, index) => {
+  //     el.classList.add("hidden");
+  //   });
+
+  //   setTimeout(() => {
+  //     introContainer.classList.add("done");
+  //   }, 900);
+
+  //   blackBox.classList.add("active");
+  //   name.classList.remove("hidden");
+  // }
+
+    if (sessionStorage.getItem("goToProject") !== "true") {
+      loading.classList.remove("done");
+      navHome.classList.remove("active");
+      nav.classList.remove("nav-show");
+      setTimeout(() => {
+        loading.classList.add("done");
+      }, 2000);
+    }
     setTimeout(() => {
-      loading.classList.add("done");
       home.classList.add("hidden");
       project.classList.remove("hidden");
-    }, 2000);
+    }, 1000);
     setTimeout(() => {
       navPrjk.classList.add("active");
       nav.classList.add("nav-show");
     }, 3000);
-  }, 100);
+
   navPrjk.removeEventListener("click", goToProject);
   navHome.addEventListener("click", playIntro);
 }
@@ -78,14 +102,15 @@ function playIntro() {
       name.classList.remove("hidden");
     }, 3000);
   }, 3500);
+  if (sessionStorage.getItem("goToProject") !== "true") {
+    setTimeout(() => {
+      nav.classList.add("nav-show");
+      navHome.classList.add("active");
+    }, 4500);
+  }
 
   navHome.removeEventListener("click", playIntro);
   navPrjk.addEventListener("click", goToProject);
-  
-  setTimeout(() => {
-    nav.classList.add("nav-show");
-    navHome.classList.add("active");
-  }, 4500);
 
 }
 
@@ -132,7 +157,6 @@ function prefCarousel() {
 
   carousel.style.transform = `translateY(-${(activeIndex - 1) * 100}vh)`;
 }
-
 triggerBtn.addEventListener("click", goToProject);
 next.addEventListener("click", nextCarousel);
 pref.addEventListener("click", prefCarousel);
