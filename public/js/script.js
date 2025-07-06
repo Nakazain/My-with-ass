@@ -15,13 +15,18 @@ const nav = document.querySelector(".nav");
 const navHome = document.querySelector(".nav-home");
 const navPrjk = document.querySelector(".nav-project");
 
-if (window.location.pathname.endsWith("index.html") || window.location.pathname === "/" || window.location.pathname === "/index.html" && sessionStorage.getItem("goToProject") !== "true") {
+if (
+  window.location.pathname.endsWith("index.html") ||
+  window.location.pathname === "/" ||
+  (window.location.pathname === "/index.html" &&
+    sessionStorage.getItem("goToProject") !== "true")
+) {
   playIntro();
 }
 
 if (sessionStorage.getItem("goToProject") === "true") {
   goToProject();
-  sessionStorage.removeItem("goToProject")
+  sessionStorage.removeItem("goToProject");
 }
 
 function goToProject() {
@@ -39,22 +44,23 @@ function goToProject() {
   //   name.classList.remove("hidden");
   // }
 
-    if (sessionStorage.getItem("goToProject") !== "true") {
-      loading.classList.remove("done");
-      navHome.classList.remove("active");
-      nav.classList.remove("nav-show");
-      setTimeout(() => {
-        loading.classList.add("done");
-      }, 2000);
-    }
+  if (sessionStorage.getItem("goToProject") !== "true") {
+    loading.classList.remove("done");
+    navHome.classList.remove("active");
+    nav.classList.remove("nav-show");
     setTimeout(() => {
-      home.classList.add("hidden");
-      project.classList.remove("hidden");
-    }, 1000);
-    setTimeout(() => {
-      navPrjk.classList.add("active");
-      nav.classList.add("nav-show");
-    }, 3000);
+      loading.classList.add("done");
+    }, 2000);
+  }
+
+  setTimeout(() => {
+    home.classList.add("hidden");
+    project.classList.remove("hidden");
+  }, 1000);
+  setTimeout(() => {
+    navPrjk.classList.add("active");
+    nav.classList.add("nav-show");
+  }, 3000);
 
   navPrjk.removeEventListener("click", goToProject);
   navHome.addEventListener("click", playIntro);
@@ -65,11 +71,12 @@ function playIntro() {
     intro.forEach((el, index) => {
       el.classList.remove("play-intro");
     });
-    
+
     name.classList.add("hidden");
     navPrjk.classList.remove("active");
     introContainer.classList.remove("done");
     nav.classList.remove("nav-show");
+
     setTimeout(() => {
       intro.forEach((el, index) => {
         el.classList.remove("hidden");
@@ -86,22 +93,25 @@ function playIntro() {
     setTimeout(() => {
       el.classList.add("play-intro");
     }, 300 + index * 500);
+
     setTimeout(() => {
       el.classList.add("hidden");
     }, 3000 + index * 500);
   });
-  
 
   setTimeout(() => {
     introContainer.classList.add("done");
+
     setTimeout(() => {
       blackBox.classList.remove("active");
     }, 1500);
+
     setTimeout(() => {
       blackBox.classList.add("active");
       name.classList.remove("hidden");
     }, 3000);
   }, 3500);
+  
   if (sessionStorage.getItem("goToProject") !== "true") {
     setTimeout(() => {
       nav.classList.add("nav-show");
@@ -111,7 +121,6 @@ function playIntro() {
 
   navHome.removeEventListener("click", playIntro);
   navPrjk.addEventListener("click", goToProject);
-
 }
 
 function nextCarousel() {
