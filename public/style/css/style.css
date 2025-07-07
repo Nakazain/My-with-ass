@@ -23,12 +23,21 @@ p {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
+}
+
+.invisible {
+  opacity: 0;
 }
 
 p.title {
   font-size: 4rem;
   margin-block: 0.5rem;
+}
+@media screen and (max-width: 991px) {
+  p.title {
+    font-size: 2rem;
+  }
 }
 
 .nav {

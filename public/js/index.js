@@ -42,7 +42,7 @@ function playIntro() {
       el.classList.remove("play-intro");
     });
 
-    dom.name.classList.add("hidden");
+    dom.name.classList.add("invisible");
     dom.navPrjk.classList.remove("active");
     dom.introContainer.classList.remove("done");
     dom.nav.classList.remove("nav-show");
@@ -78,7 +78,7 @@ function playIntro() {
 
     setTimeout(() => {
       dom.blackBox.classList.add("active");
-      dom.name.classList.remove("hidden");
+      dom.name.classList.remove("invisible");
     }, 3000);
   }, 3500);
 
