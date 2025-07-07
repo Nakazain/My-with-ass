@@ -9,12 +9,11 @@ export default async function handler(req, res) {
   const chatId = process.env.TELEGRAM_CHAT_ID;
 
   const text = `
-📬 *Pesan Baru dari Form*:
+*Pesan Baru dari Web*:
 
 *Nama:* ${name}
 *Email:* ${email}
-*Pesan:*
-${message}
+*Pesan:* ${message}
   `.trim();
 
   try {

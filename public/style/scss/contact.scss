@@ -1,0 +1,44 @@
+.contact-container {
+  margin: 5rem;
+}
+
+.contact-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.more {
+  grid-column: 1 / -1;
+}
+
+h1.title,
+h2.title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: black 3px solid;
+}
+
+form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+
+  input {
+    font-family: "Space Grotesk", sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  textarea {
+    font-family: "Space Grotesk", sans-serif;
+    resize: vertical;
+    padding: 0.5rem;
+    grid-column: 1 / -1;
+  }
+
+  button {
+    grid-column: 1 / -1;
+  }
+}

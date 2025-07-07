@@ -1,27 +1,54 @@
-navPrjk.addEventListener("click", function(e) {
+import { dom } from "./domElements.js";
+
+dom.navPrjk.addEventListener("click", function(e) {
   e.preventDefault(); 
   sessionStorage.setItem("goToProject", "true");
   window.location.href = "index.html";
 });
 
-    document.getElementById('contact-form').addEventListener('submit', async function (e) {
-      e.preventDefault();
+dom.massafeForm.addEventListener('submit', async function (e) {
+  e.preventDefault();
 
-      const formData = new FormData(this);
-      const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        message: formData.get('message')
-      };
+  const form = this;
+  const button = form.querySelector('button');
+  const originalText = button.textContent;
 
-      const response = await fetch('/api/telegram', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      });
+  button.textContent = 'Sending...';
+  button.disabled = true;
 
-      const result = await response.json();
-      alert(result.success ? "Pesan terkirim!" : "Gagal mengirim pesan.");
+  const formData = new FormData(form);
+  const data = {
+    name: formData.get('name'),
+    email: formData.get('email'),
+    message: formData.get('message')
+  };
+
+  try {
+    const response = await fetch('/api/telegram', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
     });
+
+    let result;
+    try {
+      result = await response.json();
+    } catch (err) {
+      console.error('Response not JSON:', err);
+      alert('Gagal membaca respon dari server.');
+      return;
+    }
+
+    alert(result.success ? 'Pesan terkirim!' : 'Gagal mengirim pesan.');
+    if (result.success) form.reset();
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Terjadi kesalahan saat mengirim pesan.');
+  } finally {
+
+    button.textContent = originalText;
+    button.disabled = false;
+  }
+});

@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/style/style.css">
+  <link rel="stylesheet" href="style/css/style.css">
+  <link rel="stylesheet" href="style/css/contact.css">
   <title>Nakazain</title>
 </head>
 <body>
@@ -30,9 +31,9 @@
     </div>
     <h2 class="title">Or Send Me A Message</h2>
     <form id="contact-form">
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea placeholder="Your Message" required></textarea>
+        <input name="name" type="text" placeholder="Your Name" required />
+        <input name="email" type="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" required></textarea>
         <button type="submit" class="btn">Send Message</button>
     </form>
   </div>
@@ -52,7 +53,6 @@
         </p>
       </div>
     </div>
-  <script src="js/script.js"></script>
-  <script src="js/contact.js"></script>
+  <script type="module" src="js/contact.js"></script>
 </body>
 </html>

@@ -1,0 +1,207 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+
+html,
+body {
+  font-family: "Space Grotesk", sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --anim: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+p {
+  margin: 0px;
+}
+
+.container {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.hidden {
+  display: none !important;
+}
+
+p.title {
+  font-size: 4rem;
+  margin-block: 0.5rem;
+}
+
+.nav {
+  position: fixed;
+  z-index: 3;
+  bottom: 3%;
+  left: 50%;
+  transform: translateX(-50%) translateY(5rem) scale(0.5);
+  margin: 0;
+  border: 1px solid #ccc;
+  transition: transform 0.5s var(--anim);
+
+  &.nav-show {
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+
+  &-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  p,
+  a {
+    background-color: rgb(236, 236, 236);
+    font-size: large;
+    min-width: 80px;
+    padding: 20px 10px;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s var(--anim);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 0%;
+      background: black;
+      z-index: 0;
+      opacity: 0;
+      transition: all 0.4s var(--anim);
+    }
+
+    &.active {
+      .normal {
+        color: white;
+      }
+
+      &::before {
+        opacity: 1;
+        height: 100%;
+      }
+    }
+
+    .normal,
+    .hover {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 1;
+      transition: all 0.5s var(--anim);
+    }
+
+    .normal {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      color: black;
+    }
+
+    .hover {
+      opacity: 0;
+      transform: translateY(200%) scale(0);
+      filter: blur(10px);
+      color: whitesmoke;
+      pointer-events: none;
+    }
+
+    &:hover::before {
+      opacity: 1;
+      height: 100%;
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      .normal {
+        opacity: 0;
+        filter: blur(10px);
+        transform: translateY(-200%) scale(0, 5);
+      }
+
+      .hover {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+        pointer-events: auto;
+      }
+    }
+  }
+}
+
+button {
+  margin-top: 0.75rem;
+}
+
+button,
+a.btn {
+  font-family: "Space Grotesk", sans-serif;
+  text-decoration: none;
+  color: black;
+  box-sizing: border-box;
+  border: 1px solid black;
+  padding: 12px 30px 12px 30px;
+  background-color: white;
+  font-weight: bolder;
+  font-size: 15px;
+  box-shadow: 0px 0px 1px;
+  transition: all 2s var(--anim);
+  transition-duration: 0.3s;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 7px 1px rgb(0, 0, 0);
+    border: 1px solid black;
+    cursor: pointer;
+  }
+
+  &:active {
+    transform: translateY(5px);
+    box-shadow: 0px 0px 1px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    &:active {
+      transform: none;
+    }
+  }
+
+  &.next {
+    border-radius: 0 10px 10px 0;
+  }
+
+  &.pref {
+    border-radius: 10px 0 0 10px;
+  }
+}
+
+.w-full {
+  width: 100%;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
