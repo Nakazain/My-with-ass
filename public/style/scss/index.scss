@@ -127,7 +127,7 @@ p.loading-text {
 
 }
 
-.flex-kiri {
+.flex-name {
   flex: 1;
   display: flex;
   align-items: center;
@@ -141,7 +141,7 @@ p.loading-text {
 
 }
 
-.flex-kanan {
+.flex-about {
   flex: 1;
   padding: 10%;
 }
@@ -150,9 +150,7 @@ p.loading-text {
   border-radius: 15px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
   width: 100%;
-  height: auto;
   max-width: 500px;
-  max-height: 500px;
 }
 
 .flex-box {
@@ -170,20 +168,25 @@ p.loading-text {
     transform-style: preserve-3d;
     perspective: 1000px;
     max-width: 1100px;
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 1.5s var(--anim);
 
     @media screen and (max-width: 991px) {
-      display: block;
+      flex-direction: column;
       text-align: center;
+    }
+
+    &-content, &-image {
+      @media screen and (max-width: 991px) {
+        width: 85vw;
+      }
     }
 
     &-image {
       flex: 1;
-      margin-left: 5vw;
+      width: 100%;
       transform: translateZ(50px);
       transition: all 1.5s var(--anim);
       transform: translateY(20vh) translateX(20%) rotateY(-90deg);
@@ -194,14 +197,12 @@ p.loading-text {
 
     &-content {
       flex: 1;
-      margin-left: 5vw;
       transform: translateZ(50px);
       transition: all 1.5s var(--anim);
       transform: translate3d(20vw, 0, 0);
       filter: blur(20px);
       position: relative;
       z-index: 10;
-
     }
 
     &.active {
@@ -232,7 +233,5 @@ p.loading-text {
   position: fixed;
   z-index: 2;
   bottom: 11%;
-  left: 50%;
-  transform: translateX(-50%);
 }
 

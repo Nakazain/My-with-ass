@@ -162,7 +162,7 @@ a.btn {
   color: black;
   box-sizing: border-box;
   border: 1px solid black;
-  padding: 12px 30px 12px 30px;
+  padding: 12px 30px;
   background-color: white;
   font-weight: bolder;
   font-size: 15px;
@@ -185,6 +185,7 @@ a.btn {
 
   &:disabled {
     cursor: not-allowed;
+    color: gray;
 
     &:hover {
       transform: none;
@@ -202,6 +203,13 @@ a.btn {
 
   &.pref {
     border-radius: 10px 0 0 10px;
+  }
+
+  &.next, &.pref {
+    @media screen and (max-width: 991px) {
+      font-size: small;
+      padding: 10px 20px;
+    }
   }
 }
 

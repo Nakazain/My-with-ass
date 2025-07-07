@@ -158,7 +158,7 @@ a.btn {
   color: black;
   box-sizing: border-box;
   border: 1px solid black;
-  padding: 12px 30px 12px 30px;
+  padding: 12px 30px;
   background-color: white;
   font-weight: bolder;
   font-size: 15px;
@@ -182,6 +182,7 @@ a.btn:active {
 button:disabled,
 a.btn:disabled {
   cursor: not-allowed;
+  color: gray;
 }
 button:disabled:hover,
 a.btn:disabled:hover {
@@ -199,6 +200,14 @@ a.btn.next {
 button.pref,
 a.btn.pref {
   border-radius: 10px 0 0 10px;
+}
+@media screen and (max-width: 991px) {
+  button.next, button.pref,
+  a.btn.next,
+  a.btn.pref {
+    font-size: small;
+    padding: 10px 20px;
+  }
 }
 
 .w-full {
