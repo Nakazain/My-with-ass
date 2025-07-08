@@ -175,11 +175,6 @@ p.loading-text {
     text-align: center;
   }
 }
-@media screen and (max-width: 991px) {
-  .carousel-item-content, .carousel-item-image {
-    width: 85vw;
-  }
-}
 .carousel-item-image {
   flex: 1;
   width: 100%;
@@ -198,6 +193,12 @@ p.loading-text {
   filter: blur(20px);
   position: relative;
   z-index: 10;
+}
+@media screen and (max-width: 991px) {
+  .carousel-item-content, .carousel-item-image {
+    max-width: 90vw;
+    flex: 0;
+  }
 }
 .carousel-item.active .carousel-item-image {
   transform: translate(0);
