@@ -1,11 +1,25 @@
 .contact-container {
   margin: 5rem;
+
+  @media screen and (max-width: 991px) {
+    margin: 2rem;
+    
+  }
 }
 
 .contact-buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.5rem;
+
+  @media screen and (max-width: 991px) {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 2rem;
+  }
+
+  @media screen and (max-width: 500px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .more {
@@ -24,6 +38,11 @@ form {
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 
+  @media screen and (max-width: 991px) {
+    grid-template-columns: 1fr;
+    margin-top: 1rem;
+  }
+
   input {
     font-family: "Space Grotesk", sans-serif;
     box-sizing: border-box;
@@ -40,5 +59,10 @@ form {
 
   button {
     grid-column: 1 / -1;
+
+    @media screen and (max-width: 991px) {
+      grid-column: 1;
+      margin-bottom: 10rem;
+    }
   }
 }
