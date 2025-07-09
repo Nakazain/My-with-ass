@@ -1,12 +1,6 @@
 import { dom } from "./domElements.js";
 
-if (
-  window.location.pathname.endsWith("index.html") ||
-  window.location.pathname === "/" ||
-  (window.location.pathname === "/index.html")
-) {
   playIntro();
-}
 
 if (sessionStorage.getItem("goToProject") === "true") {
   goToProject();
