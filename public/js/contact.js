@@ -6,6 +6,14 @@ dom.navPrjk.addEventListener("click", function(e) {
   window.location.href = "index.html";
 });
 
+dom.moreBtn.addEventListener("click", function(e) {
+  dom.moreContact.forEach((el, index) => {
+    el.classList.remove("hidden")
+  });
+  dom.moreBtn.id = "less";
+  dom.moreBtn.textContent = "Show Less"
+});
+
 dom.massafeForm.addEventListener('submit', async function (e) {
   e.preventDefault();
 

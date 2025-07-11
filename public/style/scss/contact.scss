@@ -22,7 +22,7 @@
   }
 }
 
-.more {
+.grid-full {
   grid-column: 1 / -1;
 }
 
@@ -31,6 +31,10 @@ h2.title {
   font-size: 2rem;
   margin-bottom: 1rem;
   border-bottom: black 3px solid;
+
+  @media screen and (max-width: 911px) {
+    font-size: 1.5rem;
+  }
 }
 
 form {

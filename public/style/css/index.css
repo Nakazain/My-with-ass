@@ -149,7 +149,7 @@ p.loading-text {
 
 .project-image {
   border-radius: 15px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   width: 100%;
   max-width: 500px;
 }
@@ -172,7 +172,6 @@ p.loading-text {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 1.5s var(--anim);
 }
 @media screen and (max-width: 991px) {
   .carousel-item {
@@ -183,19 +182,17 @@ p.loading-text {
 .carousel-item-image {
   flex: 1;
   width: 100%;
-  transform: translateZ(50px);
-  transition: all 1.5s var(--anim);
-  transform: translateY(20vh) translateX(20%) rotateY(-90deg);
-  filter: blur(20px);
+  transition: transform 1.5s var(--anim), filter 1.5s var(--anim);
+  transform: translateZ(-50px) translateX(-50%) rotateY(-45deg);
+  filter: blur(15px);
   position: relative;
   z-index: 1;
 }
 .carousel-item-content {
   flex: 1;
-  transform: translateZ(50px);
-  transition: all 1.5s var(--anim);
-  transform: translate3d(20vw, 0, 0);
-  filter: blur(20px);
+  transition: transform 1.5s var(--anim), filter 1.5s var(--anim);
+  transform: translateZ(-30px) translate3d(20vw, 0, 0);
+  filter: blur(10px);
   position: relative;
   z-index: 10;
 }
@@ -214,8 +211,8 @@ p.loading-text {
   filter: blur(0);
 }
 .carousel-item.prev .carousel-item-image {
-  transform: translate(0) rotateY(90deg);
-  filter: blur(20px);
+  transform: translateX(-30%) rotateY(45deg);
+  filter: blur(15px);
 }
 .carousel-item.prev .carousel-item-content {
   transform: translateX(20vw) translateY(0);

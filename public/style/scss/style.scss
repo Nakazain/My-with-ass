@@ -167,7 +167,7 @@ a.btn {
   font-weight: bolder;
   font-size: 15px;
   box-shadow: 0px 0px 1px;
-  transition: all 2s var(--anim);
+  transition: all 2s ease;
   transition-duration: 0.3s;
   overflow: hidden;
 
@@ -205,12 +205,24 @@ a.btn {
     border-radius: 10px 0 0 10px;
   }
 
-  &.next, &.pref {
+  &.next,
+  &.pref {
     @media screen and (max-width: 991px) {
       font-size: small;
       padding: 10px 20px;
     }
   }
+
+  // @media screen {
+  //   &:hover {
+  //     transform: translateY(0);
+  //     box-shadow: 0px 0px 0px;
+  //     border: 3px solid black;
+  //   }
+  //   &:active {
+  //     transform: scale(0.7);
+  //   }
+  // }
 }
 
 .w-full {
