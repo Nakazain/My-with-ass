@@ -1,6 +1,6 @@
 export const dom = {
   loading: document.querySelector(".loading"),
-  triggerBtn: document.querySelector(".triggerloading"),
+  gotoPrjk: document.getElementById("goto-projects"),
   introContainer: document.querySelector(".intro-container"),
   intro: document.querySelectorAll(".intro"),
   carouselItem: document.querySelectorAll(".carousel-item"),
@@ -14,7 +14,9 @@ export const dom = {
   carousel: document.querySelector(".carousel"),
   nav: document.querySelector(".nav"),
   navHome: document.querySelector(".nav-home"),
+  loadingText: document.querySelector(".loading-text"),
   navPrjk: document.querySelector(".nav-project"),
+  navContact: document.querySelector(".nav-contact"),
   messageForm: document.getElementById("contact-form"),
   moreContact: document.querySelectorAll(".more-contact"),
   showBtn: document.getElementById("show-button"),

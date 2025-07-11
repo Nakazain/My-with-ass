@@ -7,6 +7,13 @@ if (sessionStorage.getItem("goToProject") === "true") {
   sessionStorage.removeItem("goToProject");
 }
 
+function goToContact() {
+  dom.loading.classList.remove("done");
+  dom.loadingText.textContent = " ";
+  setTimeout(() => {
+    window.location.href = "contact.html";
+  }, 1200);
+}
 function goToProject() {
   if (sessionStorage.getItem("goToProject") !== "true") {
     dom.loading.classList.remove("done");
@@ -126,6 +133,7 @@ function prefCarousel() {
 
   dom.carousel.style.transform = `translateY(-${(activeIndex - 1) * 100}vh)`;
 }
-dom.triggerBtn.addEventListener("click", goToProject);
+dom.gotoPrjk.addEventListener("click", goToProject);
+dom.navContact.addEventListener("click", goToContact);
 dom.next.addEventListener("click", nextCarousel);
 dom.pref.addEventListener("click", prefCarousel);
