@@ -1,6 +1,6 @@
 import { dom } from "./domElements.js";
 
-  playIntro();
+playIntro();
 
 if (sessionStorage.getItem("goToProject") === "true") {
   goToProject();

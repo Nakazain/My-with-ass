@@ -1,20 +1,29 @@
 import { dom } from "./domElements.js";
+const showBtn = document.getElementById("show-button")
 
-dom.navPrjk.addEventListener("click", function(e) {
-  e.preventDefault(); 
+dom.navPrjk.addEventListener("click", function (e) {
+  e.preventDefault();
   sessionStorage.setItem("goToProject", "true");
   window.location.href = "index.html";
 });
 
-dom.moreBtn.addEventListener("click", function(e) {
-  dom.moreContact.forEach((el, index) => {
-    el.classList.remove("hidden")
-  });
-  dom.moreBtn.id = "less";
-  dom.moreBtn.textContent = "Show Less"
+dom.showBtn.addEventListener("click", function (e) {
+  if (dom.showBtn.classList.contains("more")) {
+    dom.moreContact.forEach((el, index) => {
+      el.classList.remove("hidden")
+    })
+    dom.showBtn.classList.remove("more")
+    dom.showBtn.textContent = "Show Less"
+  } else {
+    dom.moreContact.forEach((el, index) => {
+      el.classList.add("hidden")
+    })
+    dom.showBtn.classList.add("more")
+    dom.showBtn.textContent = "Show More"
+  }
 });
 
-dom.massafeForm.addEventListener('submit', async function (e) {
+dom.messageForm.addEventListener('submit', async function (e) {
   e.preventDefault();
 
   const form = this;
@@ -32,7 +41,8 @@ dom.massafeForm.addEventListener('submit', async function (e) {
   };
 
   try {
-    const response = await fetch('/api/telegram', {
+    const API_ENDPOINT = window.API_ENDPOINT || '/api/telegram';
+    const response = await fetch(API_ENDPOINT, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

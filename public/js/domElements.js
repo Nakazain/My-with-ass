@@ -15,7 +15,7 @@ export const dom = {
   nav: document.querySelector(".nav"),
   navHome: document.querySelector(".nav-home"),
   navPrjk: document.querySelector(".nav-project"),
-  massafeForm: document.getElementById("contact-form"),
-  moreBtn: document.getElementById("more"),
-  moreContact: document.querySelectorAll(".more-contact")
+  messageForm: document.getElementById("contact-form"),
+  moreContact: document.querySelectorAll(".more-contact"),
+  showBtn: document.getElementById("show-button"),
 };
