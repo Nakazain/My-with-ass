@@ -52,6 +52,7 @@ p {
 
 .title {
   font-size: 4rem;
+  font-weight: 700;
   margin-block: 0.5rem;
 
   @media screen and (max-width: 991px) {
@@ -177,6 +178,7 @@ button {
 button,
 a.btn {
   font-family: "Space Grotesk", sans-serif;
+  display: inline-block;
   text-decoration: none;
   color: black;
   box-sizing: border-box;
